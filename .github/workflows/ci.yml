@@ -18,9 +18,10 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
+      # В проекте нет requirements.txt, поэтому устанавливать нечего
+      # - name: Install dependencies
+      #   run: |
+      #     pip install -r requirements.txt
 
       - name: Run Unit Tests
         run: |
