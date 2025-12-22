@@ -1,24 +1,27 @@
-cat > .github/workflows/ci.yml << 'EOF'
 name: CI/CD Pipeline
+
 on:
-pull_request:
-branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
 jobs:
-run-tests:
-run-tests:
-runs-on: ubuntu-latest
-steps:
-- name: Checkout code
-uses: actions/checkout@v4
-- name: Set up Python
-uses: actions/setup-python@v5
-with:
+  run-tests:
+    name: Run Unit Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
           python-version: '3.11'
-      
+
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-      
+
       - name: Run Unit Tests
         run: |
           cd src && python -m unittest discover -v
@@ -27,10 +30,11 @@ with:
     name: Lint with Ruff
     runs-on: ubuntu-latest
     needs: run-tests
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
+
       - name: Run Ruff linter
         uses: astral-sh/ruff-action@v3
         with:
