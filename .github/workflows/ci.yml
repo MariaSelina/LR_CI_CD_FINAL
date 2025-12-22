@@ -18,9 +18,10 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
+      # requirements.txt в репозитории нет, поэтому устанавливать нечего
+      # - name: Install dependencies
+      #   run: |
+      #     pip install -r requirements.txt
 
       - name: Run Unit Tests
         run: |
@@ -39,3 +40,4 @@ jobs:
         uses: astral-sh/ruff-action@v3
         with:
           args: "check --output-format=github"
+
