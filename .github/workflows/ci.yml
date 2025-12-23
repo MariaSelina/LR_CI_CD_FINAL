@@ -6,7 +6,7 @@ on:
 
 jobs:
   run-tests:
-    name: Run Unit Tests
+    name: Run Pytest
     runs-on: ubuntu-latest
 
     steps:
@@ -18,14 +18,15 @@ jobs:
         with:
           python-version: '3.11'
 
-      # requirements.txt в репозитории нет, поэтому устанавливать нечего
-      # - name: Install dependencies
-      #   run: |
-      #     pip install -r requirements.txt
-
-      - name: Run Unit Tests
+      - name: Install dependencies
         run: |
-          cd src && python -m unittest discover -v
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run tests (pytest)
+        run: |
+          cd src
+          python -m pytest -q
 
   run-ruff:
     name: Lint with Ruff
@@ -40,4 +41,3 @@ jobs:
         uses: astral-sh/ruff-action@v3
         with:
           args: "check --output-format=github"
-
