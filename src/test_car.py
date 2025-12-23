@@ -20,4 +20,4 @@ class TestCar(unittest.TestCase):
     
     def test_drive_insufficient(self):
         with self.assertRaises(Exception):
-            self.car.drive(100)# test CI
+            self.car.drive(100)
