@@ -1,3 +1,4 @@
+
 import unittest
 from car import Car
 
@@ -20,4 +21,5 @@ class TestCar(unittest.TestCase):
     
     def test_drive_insufficient(self):
         with self.assertRaises(Exception):
-            self.car.drive(100)
+            self.car.drive(100) 
+            да да нет нет да будет свет
